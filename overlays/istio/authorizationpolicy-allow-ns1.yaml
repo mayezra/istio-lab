@@ -1,0 +1,17 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-from-ns1
+  namespace: ns2
+spec:
+  selector:
+    matchLabels:
+      app: pod-b
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["ns1"]
+    to:
+    - operation:
+        ports: ["80"]

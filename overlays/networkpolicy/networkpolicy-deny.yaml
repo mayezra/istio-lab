@@ -1,0 +1,11 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-to-pod-b
+  namespace: ns2
+spec:
+  podSelector:
+    matchLabels:
+      app: pod-b
+  policyTypes:
+  - Ingress

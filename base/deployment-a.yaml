@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-a
+  namespace: ns1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-a
+  template:
+    metadata:
+      labels:
+        app: pod-a
+    spec:
+      containers:
+      - name: curl
+        image: curlimages/curl
+        command: ["sleep", "3600"]

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-c
+  namespace: ns3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-c
+  template:
+    metadata:
+      labels:
+        app: pod-c
+    spec:
+      containers:
+      - name: curl
+        image: curlimages/curl
+        command: ["sleep", "3600"]
